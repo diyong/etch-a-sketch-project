@@ -7,8 +7,18 @@
 	text-decoration: none;
 }
 
+.header {
+	position: relative;
+	height: 5vh;
+	width: 100vw;
+	display: flex;
+	flex-flow: row;
+	justify-content: right;
+}
+
 .container {
-	height: 100vh;
+	position: relative;
+	height: 95vh;
 	width: 100vw;
 	display: grid;
 	grid-template-columns: repeat(12, 1fr);
@@ -17,5 +27,5 @@
 
 .box {
 	border: 1px solid black;
-	transition: background-color, .5s;
+
 }

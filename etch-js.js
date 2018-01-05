@@ -10,7 +10,7 @@ for (let i = 0; i < boxHover.length; i++) {
 	});
 
 	boxHover[i].addEventListener("mouseout", () => {
-		boxHover[i].style.cssText = "background-color: white;";
+		boxHover[i].style.cssText = "background-color: white; transition: background-color, .8s;";
 	});
 }
 
@@ -44,11 +44,11 @@ function fillGrid() {
 }
 
 function randomColorGen() {
-	let alphaNum = "789ABCD"; // to limit colors to brighter spectrum
+	let alphaNum = "0123456789ABCDEF"; // trying with every color
 	let color = "#";
 
 	for (let i = 0; i < 6; i++) {
-		color += alphaNum[Math.round(Math.random() * 6)];
+		color += alphaNum[Math.round(Math.random() * 16)];
 	}
 
 	return color;
