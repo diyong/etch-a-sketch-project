@@ -2,7 +2,17 @@ const container = document.querySelector(".container");
 
 fillGrid();
 
-const boxHover = document.querySelector(".box");
+const boxHover = document.getElementsByClassName("box");
+
+for (let i = 0; i < boxHover.length; i++) {
+	boxHover[i].addEventListener("mouseover", () => {
+		boxHover[i].style.cssText = `background-color: ${randomColorGen()};`;
+	});
+
+	boxHover[i].addEventListener("mouseout", () => {
+		boxHover[i].style.cssText = "background-color: white;";
+	});
+}
 
 function fillGrid() {
 	let rowStart = 1;

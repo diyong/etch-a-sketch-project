@@ -17,9 +17,5 @@
 
 .box {
 	border: 1px solid black;
-	transition: background-color, .75s;
-}
-
-.box:hover {
-	background-color: black;
+	transition: background-color, .5s;
 }
