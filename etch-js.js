@@ -1,17 +1,47 @@
 const container = document.querySelector(".container");
+const gridClearBtn = document.querySelector("#gridSetting");
+let userGridSetting = 12; // initial setting to create 12x12 grid
 
 fillGrid();
 
-const boxHover = document.getElementsByClassName("box");
+let boxHover = document.getElementsByClassName("box"); // had to come after fillGrid since no boxes before
 
-for (let i = 0; i < boxHover.length; i++) {
-	boxHover[i].addEventListener("mouseover", () => {
-		boxHover[i].style.cssText = `background-color: ${randomColorGen()};`;
+hoverChange();
+
+gridClearBtn.addEventListener("click", (e) => {
+	document.querySelectorAll(".box").forEach((a) => {
+		a.remove();
 	});
 
-	boxHover[i].addEventListener("mouseout", () => {
-		boxHover[i].style.cssText = "background-color: white; transition: background-color, .8s;";
-	});
+	userGridSetting = prompt("Please enter an integer:(x) to create a custom grid of x columns and x rows.");
+
+	if (Number.isInteger(+userGridSetting) !== true) {
+		while (Number.isInteger(+userGridSetting) !== true) {
+			userGridSetting = prompt("Incorrect input. Please enter an integer.");
+		}
+	}
+
+	customGrid(); 
+	fillGrid();
+	boxHover = document.getElementsByClassName("box");
+
+	hoverChange();
+});
+
+function hoverChange() {
+	for (let i = 0; i < boxHover.length; i++) {
+		boxHover[i].addEventListener("mouseover", () => {
+			boxHover[i].style.cssText = `background-color: ${randomColorGen()};`;
+		});
+
+		boxHover[i].addEventListener("mouseout", () => {
+			boxHover[i].style.cssText = "background-color: white; transition: background-color, .8s;";
+		});
+	}	
+}
+
+function customGrid() {
+	container.style.cssText = `grid-template-columns: repeat(${+userGridSetting}, 1fr); grid-template-rows: repeat(${+userGridSetting}, 1fr);`;
 }
 
 function fillGrid() {
@@ -20,9 +50,9 @@ function fillGrid() {
 	let colStart = 1;
 	let colEnd = 2;
 
-	while (rowEnd <= 13) { // outer loop works down the row
+	while (rowEnd <= (+userGridSetting+1)) { // outer loop works down the row
 
-		while (colEnd <= 13) { // creates row of 12 boxes
+		while (colEnd <= (+userGridSetting+1)) { // creates row of 12 boxes
 			let box = document.createElement("div");
 			box.classList.add("box");
 			box.style.cssText = `grid-area: ${rowStart} / ${colStart} / ${rowEnd} / ${colEnd};`;

@@ -14,6 +14,19 @@
 	display: flex;
 	flex-flow: row;
 	justify-content: right;
+	align-items: center;
+	background-color: rgba(76, 175, 80, .65);
+}
+
+.header h3 {
+	margin-left: 25px;
+	flex-grow: 3;
+}
+
+.header button {
+	border: none;
+	margin: 0 50px;
+	background-color: transparent;
 }
 
 .container {
