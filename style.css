@@ -13,7 +13,7 @@
 	width: 100vw;
 	display: flex;
 	flex-flow: row;
-	justify-content: right;
+	justify-content: space-around;
 	align-items: center;
 	background-color: rgba(76, 175, 80, .65);
 }
@@ -21,6 +21,16 @@
 .header h3 {
 	margin-left: 25px;
 	flex-grow: 3;
+}
+
+#rainbowBtn {
+	margin: 0;
+	text-align: center;
+}
+
+#selectColorHeader {
+	flex-grow: 0;
+	margin-right: 5px;
 }
 
 .header button {
@@ -40,5 +50,4 @@
 
 .box {
 	border: 1px solid black;
-
 }

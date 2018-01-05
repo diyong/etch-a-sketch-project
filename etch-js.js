@@ -1,5 +1,7 @@
 const container = document.querySelector(".container");
 const gridClearBtn = document.querySelector("#gridSetting");
+const rainbowBtn = document.querySelector("#rainbowBtn");
+let colorInput = document.querySelector("#colorInput");
 let userGridSetting = 12; // initial setting to create 12x12 grid
 
 fillGrid();
@@ -8,6 +10,15 @@ let boxHover = document.getElementsByClassName("box"); // had to come after fill
 
 hoverChange();
 
+rainbowBtn.addEventListener("click", (e) => {
+	hoverChange();
+});
+
+colorInput.addEventListener("input", (e) => {
+	hoverChangeUserInput();
+});
+
+// Grid Setting / Reset button event listener
 gridClearBtn.addEventListener("click", (e) => {
 	document.querySelectorAll(".box").forEach((a) => {
 		a.remove();
@@ -33,11 +44,15 @@ function hoverChange() {
 		boxHover[i].addEventListener("mouseover", () => {
 			boxHover[i].style.cssText = `background-color: ${randomColorGen()};`;
 		});
-
-		boxHover[i].addEventListener("mouseout", () => {
-			boxHover[i].style.cssText = "background-color: white; transition: background-color, .8s;";
-		});
 	}	
+}
+
+function hoverChangeUserInput() {
+	for (let i = 0; i < boxHover.length; i++) {
+		boxHover[i].addEventListener("mouseover", () => {
+			boxHover[i].style.cssText = `background-color: ${colorInput.value}`;
+		});
+	}
 }
 
 function customGrid() {
